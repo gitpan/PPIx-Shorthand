@@ -1,4 +1,4 @@
-PPIx-Shorthand version 1.0.0
+PPIx-Shorthand version 1.1.0
 
 Translation from strings to PPI classes, primarily targeted at allowing
 users to specify said classes without typing in their full names.

@@ -101,6 +101,13 @@ Readonly my @TRANSFORMS => (
     sub { return lcfirst $_[0] },
     sub { return uc $_[0]      },
     sub { return ucfirst $_[0] },
+    sub {
+        my ($name) = @_;
+        return $name if $name =~ m< \b word >xmsi;
+        $name =~ s< ( [^sy] ) \z ><${1}s>xms;
+        $name =~ s< y \z ><ies>xms;
+        return $name;
+    },
 );
 
 

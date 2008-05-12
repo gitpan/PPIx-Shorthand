@@ -2,7 +2,6 @@ Build.PL
 Changes
 lib/PPIx/Shorthand.pm
 MANIFEST			This list of files
-META.yml
 README
 t/author/consistent_version_numbers.t
 t/author/copyright.t
@@ -22,3 +21,4 @@ t/procedural_basenames.t
 t/procedural_identity.t
 t/procedural_no_prefix.t
 t/procedural_other_separators.t
+META.yml

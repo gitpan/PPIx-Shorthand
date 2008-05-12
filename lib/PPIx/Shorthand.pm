@@ -9,7 +9,7 @@ use warnings;
 use Readonly;
 use Carp;
 
-use version; our $VERSION = qv('v1.0.0');
+use version; our $VERSION = qv('v1.1.0');
 
 use Exporter qw< import >;
 
@@ -124,25 +124,46 @@ sub new {
 
     foreach my $ppi_class (@PPI_TOKEN_CLASSES) {
         $self->{lc $ppi_class} = $ppi_class;
+        $self->_add_plural($ppi_class, $ppi_class);
 
         my $no_prefix = lc substr $ppi_class, $PPI_PREFIX_LENGTH;
         $self->{$no_prefix} = $ppi_class;
+        $self->_add_plural($no_prefix, $ppi_class);
 
         my @components = split m/::/xms, $no_prefix;
         foreach my $separator ( qw< _ - . : >, $EMPTY_STRING ) {
             my $shorthand = join $separator, @components;
             $self->{$shorthand} = $ppi_class;
+            $self->_add_plural($shorthand, $ppi_class);
         } # end foreach
 
         $self->{ $components[-1] } = $ppi_class;
+        $self->_add_plural($components[-1], $ppi_class);
     } # end foreach
 
     foreach my $basename_class (@NON_UNIQUE_BASENAME_CLASSES) {
-        $self->{ lc $basename_class } = "PPI::Token::$basename_class";
+        my $fullname = "PPI::Token::$basename_class";
+
+        $self->{ lc $basename_class } = $fullname;
+        $self->_add_plural($basename_class, $fullname);
     } # end foreach
 
     return $self;
 } # end new()
+
+sub _add_plural {
+    my ($self, $basename_class, $ppi_class) = @_;
+    my $plural = lc $basename_class;
+
+    return if $plural =~ m/ \b word \z /xms; # What a wonderous exception.
+
+    $plural =~ s< ( [^sy] ) \z ><${1}s>xms;
+    $plural =~ s< y \z ><ies>xms;
+
+    $self->{$plural} = $ppi_class;
+
+    return;
+}
 
 
 sub get_class {
@@ -195,7 +216,7 @@ PPIx::Shorthand - Translation of short names to L<PPI::Element> classes.
 
 =head1 VERSION
 
-This document describes PPIx::Shorthand version 1.0.0.
+This document describes PPIx::Shorthand version 1.1.0.
 
 
 =head1 SYNOPSIS
@@ -248,6 +269,10 @@ presently the non-unique names are C<'Data'>, C<'End'>, C<'Regexp'>,
 C<'Structure'>, and C<'Unknown'>.  So, C<'exp'> translates to
 C<'PPI::Token::Number::Float::Exp'> and C<'regexp'> translates to
 C<'PPI::Token::Regexp'>.
+
+The translations include all of the above, pluralized, with the
+exception of "PPI::Token::Word" because it conflicts with
+"PPI::Token::QuoteLike::Words".
 
 The translations are based upon the classes in L<PPI> v1.201.  While
 currently supported, the translations for L<PPI::Token::DashedWord>
@@ -362,9 +387,10 @@ C<bug-ppix-shorthand@rt.cpan.org>, or through the web interface at
 L<http://rt.cpan.org>.
 
 
-=head1 TO DO
+=head1 SEE ALSO
 
-Support plurals, like L<App::Grepl>.
+L<App::Ack>,
+L<App::Grepl>
 
 
 =head1 AUTHOR
