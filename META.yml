@@ -1,6 +1,6 @@
 ---
 name: PPIx-Shorthand
-version: 1.001000
+version: 1.001001
 author:
   - 'Elliot Shank <perl@galumph.com>'
 abstract: Translation of short names to L<PPI::Element> classes.
@@ -9,7 +9,7 @@ resources:
   license: http://dev.perl.org/licenses/
 requires:
   Carp: 0
-  Exporter: 0
+  Exporter: 5.57
   Readonly: 0
   strict: 0
   utf8: 0
@@ -22,7 +22,7 @@ dynamic_config: 0
 provides:
   PPIx::Shorthand:
     file: lib/PPIx/Shorthand.pm
-    version: 1.001000
+    version: 1.001001
 generated_by: Module::Build version 0.2808
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html

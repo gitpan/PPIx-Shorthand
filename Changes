@@ -1,5 +1,9 @@
 Revision history for PPIx-Shorthand
 
+1.1.1  2008-05-28
+
+    Declare dependency upon Exporter 5.57.
+
 1.1.0  2008-05-11
 
     Added plurals of the class names.

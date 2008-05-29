@@ -46,7 +46,7 @@ my $builder = $class->new(
     },
     requires => {
         Carp        => 0,
-        Exporter    => 0,
+        Exporter    => 5.57,
         Readonly    => 0,
         strict      => 0,
         utf8        => 0,

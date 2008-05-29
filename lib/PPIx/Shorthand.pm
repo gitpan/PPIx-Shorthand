@@ -9,7 +9,7 @@ use warnings;
 use Readonly;
 use Carp;
 
-use version; our $VERSION = qv('v1.1.0');
+use version; our $VERSION = qv('v1.1.1');
 
 use Exporter qw< import >;
 
@@ -216,7 +216,7 @@ PPIx::Shorthand - Translation of short names to L<PPI::Element> classes.
 
 =head1 VERSION
 
-This document describes PPIx::Shorthand version 1.1.0.
+This document describes PPIx::Shorthand version 1.1.1.
 
 
 =head1 SYNOPSIS
@@ -389,8 +389,8 @@ L<http://rt.cpan.org>.
 
 =head1 SEE ALSO
 
-L<App::Ack>,
-L<App::Grepl>
+L<App::Grepl>,
+L<PPIx::Grep>
 
 
 =head1 AUTHOR
