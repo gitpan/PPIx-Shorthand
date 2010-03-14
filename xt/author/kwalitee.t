@@ -1,18 +1,15 @@
 #!/usr/bin/env perl
 
-use 5.008001;
 use utf8;
+use 5.008001;
+
 use strict;
 use warnings;
 
-use version; our $VERSION = qv('v1.0.0');
+use version; our $VERSION = qv('v1.2.0');
 
-use Test::Perl::Critic (
-    -severity => 1,
-    -profile => 't/author/perlcriticrc-code'
-);
-
-all_critic_ok( qw< lib bin > );
+use Test::More;
+use Test::Kwalitee;
 
 # setup vim: set filetype=perl tabstop=4 softtabstop=4 expandtab :
 # setup vim: set shiftwidth=4 shiftround textwidth=78 nowrap autoindent :

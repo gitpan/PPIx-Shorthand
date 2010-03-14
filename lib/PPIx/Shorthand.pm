@@ -9,7 +9,7 @@ use warnings;
 use Readonly;
 use Carp;
 
-use version; our $VERSION = qv('v1.1.1');
+use version; our $VERSION = qv('v1.2.0');
 
 use Exporter qw< import >;
 
@@ -25,74 +25,78 @@ our %EXPORT_TAGS    = (
 Readonly my $EMPTY_STRING => q<>;
 
 Readonly my @PPI_TOKEN_CLASSES => qw<
-    PPI::Element
-        PPI::Node
-        PPI::Document
+   PPI::Element
+      PPI::Node
+         PPI::Document
             PPI::Document::Fragment
-        PPI::Statement
+         PPI::Statement
             PPI::Statement::Package
             PPI::Statement::Include
             PPI::Statement::Sub
-                PPI::Statement::Scheduled
+               PPI::Statement::Scheduled
             PPI::Statement::Compound
             PPI::Statement::Break
+            PPI::Statement::Given
+            PPI::Statement::When
             PPI::Statement::Data
             PPI::Statement::End
             PPI::Statement::Expression
-                PPI::Statement::Variable
+               PPI::Statement::Variable
             PPI::Statement::Null
             PPI::Statement::UnmatchedBrace
             PPI::Statement::Unknown
-        PPI::Structure
+         PPI::Structure
             PPI::Structure::Block
             PPI::Structure::Subscript
             PPI::Structure::Constructor
             PPI::Structure::Condition
             PPI::Structure::List
-            PPI::Structure::ForLoop
+            PPI::Structure::For
+            PPI::Structure::Given
+            PPI::Structure::When
             PPI::Structure::Unknown
-        PPI::Token
-        PPI::Token::Whitespace
-        PPI::Token::Comment
-        PPI::Token::Pod
-        PPI::Token::Number
+      PPI::Token
+         PPI::Token::Whitespace
+         PPI::Token::Comment
+         PPI::Token::Pod
+         PPI::Token::Number
             PPI::Token::Number::Binary
             PPI::Token::Number::Octal
             PPI::Token::Number::Hex
             PPI::Token::Number::Float
-                PPI::Token::Number::Exp
+               PPI::Token::Number::Exp
             PPI::Token::Number::Version
-        PPI::Token::Word
-        PPI::Token::DashedWord
-        PPI::Token::Symbol
+         PPI::Token::Word
+         PPI::Token::DashedWord
+         PPI::Token::Symbol
             PPI::Token::Magic
-        PPI::Token::ArrayIndex
-        PPI::Token::Operator
-        PPI::Token::Quote
+         PPI::Token::ArrayIndex
+         PPI::Token::Operator
+         PPI::Token::Quote
             PPI::Token::Quote::Single
             PPI::Token::Quote::Double
             PPI::Token::Quote::Literal
             PPI::Token::Quote::Interpolate
-        PPI::Token::QuoteLike
+         PPI::Token::QuoteLike
             PPI::Token::QuoteLike::Backtick
             PPI::Token::QuoteLike::Command
             PPI::Token::QuoteLike::Regexp
             PPI::Token::QuoteLike::Words
             PPI::Token::QuoteLike::Readline
-        PPI::Token::Regexp
+         PPI::Token::Regexp
             PPI::Token::Regexp::Match
             PPI::Token::Regexp::Substitute
             PPI::Token::Regexp::Transliterate
-        PPI::Token::HereDoc
-        PPI::Token::Cast
-        PPI::Token::Structure
-        PPI::Token::Label
-        PPI::Token::Separator
-        PPI::Token::Data
-        PPI::Token::End
-        PPI::Token::Prototype
-        PPI::Token::Attribute
-        PPI::Token::Unknown
+         PPI::Token::HereDoc
+         PPI::Token::Cast
+         PPI::Token::Structure
+         PPI::Token::Label
+         PPI::Token::Separator
+         PPI::Token::Data
+         PPI::Token::End
+         PPI::Token::Prototype
+         PPI::Token::Attribute
+         PPI::Token::Unknown
 >;
 
 Readonly my %PPI_TOKEN_CLASSES => map { $_ => 1 } @PPI_TOKEN_CLASSES;
@@ -102,9 +106,11 @@ Readonly my $PPI_PREFIX_LENGTH => length 'PPI::';
 Readonly my @NON_UNIQUE_BASENAME_CLASSES => qw<
    Data
    End
+   Given
    Regexp
    Structure
    Unknown
+   When
 >;
 
 Readonly my $GLOBAL_INSTANCE => PPIx::Shorthand->new();
@@ -216,7 +222,7 @@ PPIx::Shorthand - Translation of short names to L<PPI::Element> classes.
 
 =head1 VERSION
 
-This document describes PPIx::Shorthand version 1.1.1.
+This document describes PPIx::Shorthand version 1.2.0.
 
 
 =head1 SYNOPSIS
@@ -274,7 +280,7 @@ The translations include all of the above, pluralized, with the
 exception of "PPI::Token::Word" because it conflicts with
 "PPI::Token::QuoteLike::Words".
 
-The translations are based upon the classes in L<PPI> v1.201.  While
+The translations are based upon the classes in L<PPI> v1.208.  While
 currently supported, the translations for L<PPI::Token::DashedWord>
 may disappear in the future based upon the evolution of PPI itself.
 
@@ -400,8 +406,7 @@ Elliot Shank  C<< <perl@galumph.com> >>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright ©2008, Elliot Shank C<< <perl@galumph.com> >>. All rights
-reserved.
+Copyright ©2008-2010, Elliot Shank C<< <perl@galumph.com> >>.
 
 This module is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself. See L<perlartistic> and

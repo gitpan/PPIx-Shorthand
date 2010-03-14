@@ -8,7 +8,7 @@ use warnings;
 
 use Readonly;
 
-use version; our $VERSION = qv('v1.0.0');
+use version; our $VERSION = qv('v1.2.0');
 
 use Test::More;
 
@@ -28,6 +28,8 @@ Readonly my @NON_PREFIXED_CLASSES => qw<
                 Statement::Scheduled
             Statement::Compound
             Statement::Break
+            Statement::Given
+            Statement::When
             Statement::Data
             Statement::End
             Statement::Expression
@@ -41,7 +43,9 @@ Readonly my @NON_PREFIXED_CLASSES => qw<
             Structure::Constructor
             Structure::Condition
             Structure::List
-            Structure::ForLoop
+            Structure::For
+            Structure::Given
+            Structure::When
             Structure::Unknown
         Token
         Token::Whitespace

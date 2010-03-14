@@ -1,4 +1,4 @@
-PPIx-Shorthand version 1.1.1
+PPIx-Shorthand version 1.2.0
 
 Translation from strings to PPI classes, primarily targeted at allowing
 users to specify said classes without typing in their full names.
@@ -30,7 +30,7 @@ a bug in those tools and not in this distribution.
 
 COPYRIGHT AND LICENSE
 
-Copyright ©2008, Elliot Shank
+Copyright ©2008-2010, Elliot Shank
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

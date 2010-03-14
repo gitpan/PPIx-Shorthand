@@ -9,23 +9,15 @@ use warnings;
 use English qw< -no_match_vars >;
 use Readonly;
 
-use version; our $VERSION = qv('v1.0.0');
+use version; our $VERSION = qv('v1.2.0');
 
 use PPIx::Shorthand qw< get_ppi_class >;
 
-use Test::More;
+use Test::More tests => 12;
+use Test::Exception;
 
 
 Readonly my $EMPTY_STRING => q<>;
-
-
-eval 'use Test::Exception';     ## no critic (ProhibitStringyEval)
-if ($EVAL_ERROR) {
-    plan skip_all => 'Test::Exception required for exception tests.';
-} # end if
-
-
-plan tests => 12;
 
 
 throws_ok(

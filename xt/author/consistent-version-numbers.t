@@ -9,7 +9,7 @@ use utf8;
 use strict;
 use warnings;
 
-use version; our $VERSION = qv('v1.0.0');
+use version; our $VERSION = qv('v1.2.0');
 
 use File::Find;
 use File::Slurp;

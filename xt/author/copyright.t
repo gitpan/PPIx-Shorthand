@@ -12,7 +12,7 @@ use utf8;
 use strict;
 use warnings;
 
-use version; our $VERSION = qv('v1.0.0');
+use version; our $VERSION = qv('v1.2.0');
 
 use File::Find;
 use File::Slurp;
@@ -43,7 +43,6 @@ sub check_file {
     # Only test plain files
     return if (! -f $_);
 
-    ## no critic (ProhibitComplexRegexes)
     # Filter the list of filenames
     return if not
         m<
@@ -62,7 +61,6 @@ sub check_file {
             )
             $
         >xms;
-    ## use critic
 
     my $content = read_file($_);
 

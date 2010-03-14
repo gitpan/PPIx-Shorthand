@@ -8,7 +8,7 @@ use warnings;
 
 use Readonly;
 
-use version; our $VERSION = qv('v1.0.0');
+use version; our $VERSION = qv('v1.2.0');
 
 use Test::More;
 
@@ -30,6 +30,8 @@ Readonly my @UNIQUE_BASENAME_COMPONENTS => (
             [ qw< Statement Break > ],
 
 
+
+
             [ qw< Statement Expression > ],
                 [ qw< Statement Variable > ],
             [ qw< Statement Null > ],
@@ -41,7 +43,9 @@ Readonly my @UNIQUE_BASENAME_COMPONENTS => (
             [ qw< Structure Constructor > ],
             [ qw< Structure Condition > ],
             [ qw< Structure List > ],
-            [ qw< Structure ForLoop > ],
+            [ qw< Structure For > ],
+
+
 
         [ qw< Token > ],
         [ qw< Token Whitespace > ],
@@ -90,9 +94,11 @@ Readonly my @UNIQUE_BASENAME_COMPONENTS => (
 Readonly my @NON_UNIQUE_BASENAME_CLASSES => qw<
    Data
    End
+   Given
    Regexp
    Structure
    Unknown
+   When
 >;
 
 Readonly my @TRANSFORMS => (

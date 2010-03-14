@@ -8,7 +8,7 @@ use warnings;
 
 use Readonly;
 
-use version; our $VERSION = qv('v1.0.0');
+use version; our $VERSION = qv('v1.2.0');
 
 use Test::More;
 
@@ -30,6 +30,8 @@ Readonly my @CLASS_NAME_COMPONENTS => (
                 [ qw< Statement Scheduled > ],
             [ qw< Statement Compound > ],
             [ qw< Statement Break > ],
+            [ qw< Statement Given > ],
+            [ qw< Statement When > ],
             [ qw< Statement Data > ],
             [ qw< Statement End > ],
             [ qw< Statement Expression > ],
@@ -43,7 +45,9 @@ Readonly my @CLASS_NAME_COMPONENTS => (
             [ qw< Structure Constructor > ],
             [ qw< Structure Condition > ],
             [ qw< Structure List > ],
-            [ qw< Structure ForLoop > ],
+            [ qw< Structure For > ],
+            [ qw< Structure Given > ],
+            [ qw< Structure When > ],
             [ qw< Structure Unknown > ],
         [ qw< Token > ],
         [ qw< Token Whitespace > ],
